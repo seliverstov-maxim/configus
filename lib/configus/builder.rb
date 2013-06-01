@@ -1,21 +1,23 @@
-class Configus::Builder
-  def self.build(env, &block)
-    b = new(env, block)
-    b.configus
-  end
+module Configus
+  class Builder
+    def self.build(env, options = {}, &block)
+      b = new(env, options, block)
+      b.configus
+    end
 
-  def initialize(env, block)
-    @envs = {}
-    @env = env
-    instance_eval &block
-  end
+    def initialize(env, options = {}, block)
+      @envs = {}
+      @env = env
+      instance_eval &block
+    end
 
-  def env(name, options = {}, &block)
-    data = Configus::ProxyBuilder.build(block)
-    @envs[name] = data
-  end
+    def env(name, options = {}, &block)
+      data = ProxyBuilder.build(block)
+      @envs[name] = data
+    end
 
-  def configus
-    Configus::Config.new(@envs[@env])
+    def configus
+      Config.new(@envs[@env])
+    end
   end
 end

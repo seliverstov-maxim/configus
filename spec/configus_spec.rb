@@ -10,7 +10,7 @@ describe Configus do
           pass 'secret_development'
         end
       end
-      env :test do
+      env :test, parent: :development do
         database_pass 'secret_test'
       end
       env :production do
