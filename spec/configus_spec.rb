@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe 'should get value by key' do
-  p 'hello'
+  database_pass.should eql 'secret'
 end
