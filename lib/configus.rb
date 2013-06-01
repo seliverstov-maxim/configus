@@ -1,4 +1,5 @@
 require "configus/version"
+require "active_support/core_ext/hash/deep_merge"
 
 module Configus
   def self.build env, &block
@@ -7,5 +8,6 @@ module Configus
 
   autoload :Builder, 'configus/builder'
   autoload :ProxyBuilder, 'configus/proxy_builder'
+  autoload :ConfigNode, 'configus/config_node'
   autoload :Config, 'configus/config'
 end
