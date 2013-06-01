@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# TODO: use autoload
 require_relative '../lib/configus_builder.rb'
 
 describe Configus do
