@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Configus do
 
   before :each do
-    @configus = Configus.build :development do
+    @configus = Configus.build(:development) do
       database_pass 'secret'
       # database.pass 'secret'
     end
