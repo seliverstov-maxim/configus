@@ -11,7 +11,7 @@ class Configus::ProxyBuilder
 
   def method_missing(name, *args, &block)
     if block
-      @data[name] = Configus::ProxyBuilder.build(block)
+      @data[name] = self.class.build(block)
     else
       @data[name] = args[0]
     end
