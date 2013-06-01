@@ -13,11 +13,25 @@ module Configus
 
     def env(name, options = {}, &block)
       data = ProxyBuilder.build(block)
+      if options[:parent]
+        data[:parent] = options[:parent]
+      end
       @envs[name] = data
     end
 
     def configus
-      Config.new(@envs[@env])
+      data = merge_parent(@envs[@env])
+      Config.new(data)
+    end
+
+    def merge_parent(data)
+      if data[:parent]
+        key = data[:parent]
+        data.delete(:parent)
+        data.merge!(@envs[key])
+        merge_parent(data)
+      end
+      data
     end
   end
 end

@@ -4,7 +4,7 @@ describe Configus do
 
   before :each do
     @configus = Configus.build(:development) do
-      env :development do
+      env :development, parent: :none do
         database_pass 'secret_development'
         database do
           pass 'secret_development'
@@ -15,6 +15,12 @@ describe Configus do
       end
       env :production do
         database_pass 'secret_production'
+      end
+      env :none do
+        name 'max'
+        database do
+          pass2 'secret_development2'
+        end
       end
     end
   end
@@ -27,5 +33,8 @@ describe Configus do
     @configus.database.pass.should eql 'secret_development'
   end
 
+  it 'should nested env' do
+    @configus.name.should eql 'max'
+  end
 end
 
