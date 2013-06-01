@@ -11,11 +11,11 @@ class Configus::Builder
   end
 
   def env(name, options = {}, &block)
-    data = ProxyBuilder.build(block)
+    data = Configus::ProxyBuilder.build(block)
     @envs[name] = data
   end
 
   def configus
-    Config.new(@envs[@env])
+    Configus::Config.new(@envs[@env])
   end
 end

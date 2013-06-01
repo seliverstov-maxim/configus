@@ -6,4 +6,6 @@ module Configus
   end
 
   autoload :Builder, 'configus/builder'
+  autoload :ProxyBuilder, 'configus/proxy_builder'
+  autoload :Config, 'configus/config'
 end
