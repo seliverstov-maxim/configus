@@ -23,5 +23,4 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rspec-expectations"
-  spec.add_development_dependency "active_support"
 end

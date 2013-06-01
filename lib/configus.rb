@@ -1,5 +1,4 @@
 require "configus/version"
-require "active_support/core_ext/hash/deep_merge"
 
 module Configus
   def self.build env, &block

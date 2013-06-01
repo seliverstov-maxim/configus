@@ -17,13 +17,17 @@ module Configus
       @envs[name] = node
     end
 
-    def apply_inheritance(env)
-      puts env
-      parent_name = @envs[env].parent
+    def apply_inheritance(env_name)
+      env = @envs[env_name]
+      parent_name = env.parent
       if parent_name
-        parent_evn = @envs[parent_name]
+        parent_env = @envs[parent_name]
+
         apply_inheritance(parent_name)
-        @envs[env].data.deep_merge!(parent_evn.data)
+        env.data = parent_env.data.merge(env.data)
+
+        # HINT: Let it be here just for tracing purposes
+        # puts "merge #{parent_name} to #{env_name}"
       end
     end
 
